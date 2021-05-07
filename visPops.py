@@ -1,29 +1,4 @@
 
-'''
-pip install pandas
-pip install matplotlib
-pip install shapely
-pip install --upgrade ffmpeg-python
-pip install --upgrade pyshp
-(version 2.1.3)
-pip install --upgrade shapely
-(version 1.7.1)
-pip install --upgrade descartes
-(version 1.1.0)
-pip install --upgrade ffmpeg-python
-(version 0.2.0)
-python.exe -m pip install GDAL-3.2.2-cp38-cp38-win_amd64.whl
-(Depende de la versión de python cpversion 3.8.* y la arq del sistema 32 o 64)
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#gdal
-python.exe -m pip install Fiona-1.8.19-cp38-cp38-win_amd64.whl
-(Depende de la versión de python cpversion 3.8.* y la arq del sistema 32 o 64)
-https://www.lfd.uci.edu/~gohlke/pythonlibs/#fiona
-pip install geopandas
-(version 0.9.0)
-pip install pyproj
-(version 3.0.1)
-'''
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from shapely.geometry import Point, Polygon

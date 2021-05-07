@@ -1,8 +1,3 @@
-'''
-Download ffmpeg https://github.com/BtbN/FFmpeg-Builds/releases
-
-'''
-
 
 import time
 import _pickle as cPickle
