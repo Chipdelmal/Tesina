@@ -12,7 +12,6 @@ from pyproj import  CRS
 import bz2
 from shapely.geometry import Point, Polygon
 import math
-import ffmpeg
 import matplotlib.pyplot as plt
 from os import path
 import subprocess

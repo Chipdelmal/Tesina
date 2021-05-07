@@ -24,14 +24,12 @@ pip install pyproj
 (version 3.0.1)
 '''
 
-#%matplotlib inline
 import pandas as pd
 import matplotlib.pyplot as plt
 from shapely.geometry import Point, Polygon
 import bz2
 import _pickle as cPickle
 import math
-import ffmpeg
 import geopandas as gpd
 from pyproj import  CRS
 
