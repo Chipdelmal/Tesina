@@ -1,4 +1,3 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 from shapely.geometry import Point, Polygon
@@ -19,6 +18,7 @@ CLUSTERS = "clusters.bz"
 map_shape = gpd.read_file(SHAPEFILE)
 #POPULATIONS
 populations = pd.read_csv(POPULATIONS) 
+print(len(populations))
 #CLUSTERS
 with bz2.open(CLUSTERS, "rb") as f:
     # Decompress data from file
@@ -35,7 +35,7 @@ geo_populations = gpd.GeoDataFrame(populations, crs=crs, geometry=points)
 
 centroids = []
 coordinates = []
-id = 1
+id = 0
 
 for cluster in clusters:
   acumLon = 0
@@ -64,11 +64,18 @@ geo_centroids = gpd.GeoDataFrame(df, crs=crs, geometry=centroids)
 ### PLOT MAP OF POPULATIONS AND CLUSTERS ###
 fig, ax = plt.subplots(figsize=(15,15))
 map_shape.plot(ax = ax, alpha= 0.4, figsize=(20,15), edgecolor="lightgray", facecolor="lightgray")
-geo_populations.plot(ax = ax, markersize=10, color="orchid", marker="o", label="Population")
-geo_centroids.plot(ax = ax, markersize=50, color="steelblue", marker="X", label="Cluster")
+geo_populations.plot(ax = ax, markersize=20, color=(0.4, 0.2, 0.5, 0.2), marker="o", label="Population")
+pointLabel = 0
+for i in range(len(populations)):
+  point = populations.iloc[i]
+  plt.text(point["lon"], point["lat"], str(pointLabel), color=(0.7, 0.2, 0.5, 0.2), fontsize=6)
+  pointLabel += 1
+geo_centroids.plot(ax = ax, markersize=60, color="steelblue", marker="X", label="Cluster")
 
 for coordinate in coordinates:
-    plt.text(coordinate[1], coordinate[2], coordinate[0], color="black", fontsize=8)
+  plt.text(coordinate[1], coordinate[2], coordinate[0], color="black", fontsize=8)
+
+
 
 plt.legend(prop={'size': 10}, loc="upper left")
 plt.show()

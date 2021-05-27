@@ -1,4 +1,3 @@
-
 import time
 import _pickle as cPickle
 import geopandas as gpd
@@ -38,19 +37,25 @@ clusters = cPickle.loads(content)
 crs = CRS('EPSG:4326')
 centroids = []
 coords = []
-id = 1
+id = 0
 file = 0
-
+aux = 0
 for cluster in clusters:
-  
+  clusterProportion = None
+  content = None
   if(file < 10):
     numFile = "0" + str(file)
+  else:
+    numFile = str(file)
   with bz2.open(SIM_URL + numFile + FILE_TYPE, "rb") as f:
       # Decompress data from file
       content = f.read()
   clusterProportion = cPickle.loads(content)
   file += 1
+  aux += 1
 
+
+  # Number of days in the simulation
   days = len(clusterProportion.get("population"))
   
   arrH = []
@@ -60,23 +65,18 @@ for cluster in clusters:
   propO = 0
   propP = 0
   
-  for i in range(len(clusterProportion.get("population"))):
-    propH = clusterProportion.get("population")[i][0] / clusterProportion.get("population")[i][2]
-    propO = clusterProportion.get("population")[i][1] / clusterProportion.get("population")[i][2]
-    propP = clusterProportion.get("population")[i][2]
-    if propH < 0.3:
-      propH = 0.3
-    elif propH > 0.7:
-      propH = 0.7
+  # Proportion of each gene and total
+  for i in range(days):
 
-    if propO < 0.3:
-      propO = 0.3
-    elif propO > 0.7:
-      propO = 0.7
+    propH = round(clusterProportion.get("population")[i][0] / clusterProportion.get("population")[i][2], 2)
+    propO = round(clusterProportion.get("population")[i][1] / clusterProportion.get("population")[i][2], 2)
+    propP = round(clusterProportion.get("population")[i][2], 2)
+    
 
     arrH.append(propH)
     arrO.append(propO)
     arrP.append(propP)
+  
 
   acumLon = 0
   acumLat = 0
@@ -91,9 +91,9 @@ for cluster in clusters:
   centroidLat=acumLat/len(cluster)
   coord = [id,centroidLon, centroidLat,pop,arrH,arrO,arrP]
   
-  point = Point(centroidLon, centroidLat)
+  geoPoint = Point(centroidLon, centroidLat)
  
-  centroids.append(point)
+  centroids.append(geoPoint)
   coords.append(coord)
   id+=1
 
@@ -111,7 +111,7 @@ time_text = ax.text(7.2, 0.1,'0', fontsize=20)
 aux = "000"
 
 #Generate frames
-for i in range(300):
+for i in range(days):
   if(i > 9 and i < 100):
     aux = "00"
   elif(i > 99 and i < 1000):
@@ -122,7 +122,7 @@ for i in range(300):
 
   if(not path.exists(GENERATED_FRAMES + name)):
     map_shape.plot(ax = ax, alpha= 0.4, figsize=(20,15), edgecolor="gray", facecolor="white")
-    s = [math.log2(geo_centroids.iloc[n].popul)*20 for n in range(len(geo_centroids))]
+    s = [math.log2(geo_centroids.iloc[n].propP[i])*20 for n in range(len(geo_centroids))]
     colorsH = [[0.4, 0.2, 0.5, geo_centroids.iloc[n].propH[i]] for n in range(len(geo_centroids))]
     colorsO = [[0.8, 0.2, 0.5, geo_centroids.iloc[n].propO[i]] for n in range(len(geo_centroids))]
 
