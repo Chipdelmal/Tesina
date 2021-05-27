@@ -18,7 +18,7 @@ CLUSTERS = "clusters.bz"
 map_shape = gpd.read_file(SHAPEFILE)
 #POPULATIONS
 populations = pd.read_csv(POPULATIONS) 
-print(len(populations))
+
 #CLUSTERS
 with bz2.open(CLUSTERS, "rb") as f:
     # Decompress data from file
