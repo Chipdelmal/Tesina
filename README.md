@@ -27,12 +27,10 @@
 
 3. Clonar repositorio de link superior
 
-4. Cambiarse a rama master
-
-5. Ejecutar comando: python3 visPops.py
+4. Ejecutar comando: python3 visPops.py
    
-6. Mostrará en pantalla el plot
+5. Mostrará en pantalla el plot
 
-7. Ejecutar comando: python3 visSimul.py
+6. Ejecutar comando: python3 visSimul.py
 
-8. Esperar a que genere el video de la simulación con el nombre output.mp4
+7. Esperar a que genere el video de la simulación con el nombre output.mp4
