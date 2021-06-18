@@ -2,9 +2,6 @@
 ## Guía de uso Linux
 
 
-    • Link repositorio: https://github.com/EugenioSa/Tesina/tree/master
-
-
 ## Librerias a instalar
       
 Python (pip)
