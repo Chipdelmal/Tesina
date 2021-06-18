@@ -2,9 +2,6 @@
 ## Guía de uso Linux
 
 
-    • Link repositorio: https://github.com/EugenioSa/Tesina/tree/master
-
-
 ## Librerias a instalar
       
 ### Python (pip)
@@ -40,4 +37,4 @@
 
 8. Ejecutar comando: python3 visSimul.py
 
-9.  Esperar a que genere el video de la simulación con el nombre output.mp4
+9. Esperar a que genere el video de la simulación con el nombre output.mp4
