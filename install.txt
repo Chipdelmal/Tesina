@@ -1,0 +1,11 @@
+sudo apt install python3-pip
+sudo apt install ffmpeg
+sudo apt install python3-venv
+sudo apt install python3-tk
+pip install virtualenv
+pip install fiona
+pip install matplotlib
+pip install pandas
+pip install geopandas
+pip install pyproj
+pip install shapely
