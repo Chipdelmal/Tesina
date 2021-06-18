@@ -21,20 +21,18 @@
 
 ## Ejecutar herramientas
 
-1.  Instalar librería de virtualenv y python3-venv
+1. Ejecutar archivo install.txt
 
-2.  Crear y activar virtual environment
+2. Crear y activar virtual environment
 
 3. Clonar repositorio de link superior
 
 4. Cambiarse a rama master
 
-5. Instalar librerías restantes de apartado superior
-
-6. Ejecutar comando: python3 visPops.py
+5. Ejecutar comando: python3 visPops.py
    
-7. Mostrará en pantalla el plot
+6. Mostrará en pantalla el plot
 
-8. Ejecutar comando: python3 visSimul.py
+7. Ejecutar comando: python3 visSimul.py
 
-9. Esperar a que genere el video de la simulación con el nombre output.mp4
+8. Esperar a que genere el video de la simulación con el nombre output.mp4
