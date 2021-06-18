@@ -25,7 +25,7 @@
 
 2. Crear y activar virtual environment
 
-3. Clonar repositorio de link superior
+3. Clonar repositorio
 
 4. Ejecutar comando: python3 visPops.py
    
